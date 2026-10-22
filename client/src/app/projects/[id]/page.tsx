@@ -13,7 +13,7 @@ const Project = ({ params }: Props) => {
   return (
     <div>
       {/* MODAL NEW TASK */}
-      {/* <Projectheader activeTab={activeTab} setActiveTab={setActiveTab} /> */}
+      <ProjectHeader activeTab={activeTab} setActiveTab={setActiveTab} />
       {/* {activeTab === "Board" && <Board />} */}
     </div>
   );
