@@ -80,7 +80,7 @@ export const api = createApi({
       invalidatesTags: ["Projects"],
     }),
     getTasks: build.query<Task[], { projectId: number }>({
-      query: ({ projectId }) => `projects?projectId=${projectId}`,
+      query: ({ projectId }) => `tasks?projectId=${projectId}`,
       transformResponse: (response: { success: boolean; data: Task[] }) =>
         response.data,
       providesTags: (result) =>
