@@ -1,14 +1,16 @@
 import Header from "@/components/Header";
 import { Clock, Filter, Grid3X3, List, Share2, Table } from "lucide-react";
 import React, { useState } from "react";
+import { useAppDispatch } from "@/app/redux";
+import { setLastActiveProjectTab } from "@/state";
 
 type Props = {
   activeTab: string;
-  setActiveTab: (tabName: string) => void;
 };
 
-const ProjectHeader = ({ activeTab, setActiveTab }: Props) => {
+const ProjectHeader = ({ activeTab }: Props) => {
   const [isModalNewProjectOpen, setIsModalNewProjectOpen] = useState(false);
+  const dispatch = useAppDispatch();
 
   return (
     <div className="px-4 xl:px-6">
@@ -23,25 +25,25 @@ const ProjectHeader = ({ activeTab, setActiveTab }: Props) => {
           <TabButton
             name="Board"
             icon={<Grid3X3 className="h-5 w-5" />}
-            setActiveTab={setActiveTab}
+            setActiveTab={() => dispatch(setLastActiveProjectTab("Board"))}
             activeTab={activeTab}
           />
           <TabButton
             name="List"
             icon={<List className="h-5 w-5" />}
-            setActiveTab={setActiveTab}
+            setActiveTab={() => dispatch(setLastActiveProjectTab("List"))}
             activeTab={activeTab}
           />
           <TabButton
             name="Timeline"
             icon={<Clock className="h-5 w-5" />}
-            setActiveTab={setActiveTab}
+            setActiveTab={() => dispatch(setLastActiveProjectTab("Timeline"))}
             activeTab={activeTab}
           />
           <TabButton
             name="Table"
             icon={<Table className="h-5 w-5" />}
-            setActiveTab={setActiveTab}
+            setActiveTab={() => dispatch(setLastActiveProjectTab("Table"))}
             activeTab={activeTab}
           />
         </div>
