@@ -3,7 +3,7 @@ import React from "react";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { Task as TaskType } from "@/state/api";
-import { EllipsisVertical, Plus } from "lucide-react";
+import { EllipsisVertical, MessageSquareMore, Plus } from "lucide-react";
 import { format } from "date-fns";
 import Image from "next/image";
 
@@ -31,7 +31,7 @@ const BoardView = ({ id, setIsModalNewTaskOpen }: BoardProps) => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="md:grid-cels-2 grid grid-cols-1 gap-4 p-4 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 xl:grid-cols-4">
         {taskStatus.map((status) => (
           <TaskColumn
             key={status}
@@ -236,6 +236,22 @@ const Task = ({ task }: TaskProps) => {
                 className="h-8 w-8 rounded-full border-2 border-white object-cover dark:border-dark-secondary"
               />
             )}
+            {task.author && (
+              <Image
+                key={task.author.id}
+                src={`/${task.author.profilePictureUrl!}`}
+                alt={task.author.username}
+                width={30}
+                height={30}
+                className="h-8 w-8 rounded-full border-2 border-white object-cover dark:border-dark-secondary"
+              />
+            )}
+          </div>
+          <div className="flex items-center text-gray-500 dark:text-neutral-500">
+            <MessageSquareMore size={20} />
+            <span className="ml-1 text-sm dark:text-neutral-400">
+              {numberOfComments}
+            </span>
           </div>
         </div>
       </div>
