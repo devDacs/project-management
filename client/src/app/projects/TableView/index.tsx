@@ -3,6 +3,8 @@ import Header from "@/components/Header";
 import { useGetTasksQuery } from "@/state/api";
 import React from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { dataGridClassNames, dataGridSxStyles } from "@/lib/utils";
+import { format } from "date-fns";
 
 type Props = {
   id: string;
@@ -13,6 +15,14 @@ const statusColors = (status: string) => {
   if (status === "To Do") return "bg-blue-100 text-blue-800";
   if (status === "Work In Progress") return "bg-green-100 text-green-800";
   if (status === "Under Review") return "bg-orange-100 text-orange-800";
+  return "bg-gray-100 text-gray-800";
+};
+
+const priorityColors = (priority: string) => {
+  if (priority === "Urgent") return "bg-red-100 text-red-800";
+  if (priority === "High") return "bg-yellow-100 text-yellow-800";
+  if (priority === "Medium") return "bg-green-100 text-green-800";
+  if (priority === "Low") return "bg-blue-100 text-blue-800";
   return "bg-gray-100 text-gray-800";
 };
 
@@ -43,6 +53,13 @@ const columns: GridColDef[] = [
     field: "priority",
     headerName: "Priority",
     width: 75,
+    renderCell: (params) => (
+      <span
+        className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 ${priorityColors(params.value)}`}
+      >
+        {params.value}
+      </span>
+    ),
   },
   {
     field: "tags",
@@ -53,11 +70,13 @@ const columns: GridColDef[] = [
     field: "startDate",
     headerName: "Start Date",
     width: 130,
+    renderCell: (params) => format(new Date(params.value), "P"),
   },
   {
     field: "dueDate",
     headerName: "Due Date",
     width: 130,
+    renderCell: (params) => format(new Date(params.value), "P"),
   },
   {
     field: "author",
@@ -89,7 +108,12 @@ const Table = ({ id, setIsModalNewTaskOpen }: Props) => {
       <div className="pt-5">
         <Header name="Table" isSmallText={true} />
       </div>
-      <DataGrid rows={tasks || []} columns={columns} />
+      <DataGrid
+        rows={tasks || []}
+        columns={columns}
+        className={dataGridClassNames}
+        sx={dataGridSxStyles(isDarkMode)}
+      />
     </div>
   );
 };
