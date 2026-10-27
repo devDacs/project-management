@@ -7,7 +7,7 @@ export const dataGridSxStyles = (isDarkMode: boolean) => {
       color: `${isDarkMode ? "#e5e7eb" : ""}`,
       '& [role="row"] > *': {
         backgroundColor: `${isDarkMode ? "#1d1f21" : "white"}`,
-        borderColor: `${isDarkMode ? "#2d3135" : ""}`,
+        borderColor: `${isDarkMode ? "#f8360033" : ""}`,
       },
     },
     "& .MuiIconbutton-root": {
@@ -23,10 +23,10 @@ export const dataGridSxStyles = (isDarkMode: boolean) => {
       border: "none",
     },
     "& .MuiDataGrid-row": {
-      borderBottom: `1px solid ${isDarkMode ? "#2d3135" : "e5e7eb"}`,
+      borderBottom: `1px solid ${isDarkMode ? "#2d3135" : "#e5e7eb"}`,
     },
     "& .MuiDataGrid-withBorderColor": {
-      borderColor: `1px solid ${isDarkMode ? "#2d3135" : "e5e7eb"}`,
+      borderColor: `1px solid ${isDarkMode ? "#2d3135" : "#e5e7eb"}`,
     },
   };
 };
