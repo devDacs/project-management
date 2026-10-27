@@ -9,7 +9,7 @@ import {
 } from "@/state/api";
 import React from "react";
 import { useAppSelector } from "../redux";
-import { GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Header from "@/components/Header";
 import {
   Bar,
@@ -24,6 +24,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { dataGridClassNames, dataGridSxStyles } from "@/lib/utils";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
@@ -140,6 +141,23 @@ const HomePage = () => {
               <Legend />
             </PieChart>
           </ResponsiveContainer>
+        </div>
+        <div className="rounded-lg bg-white p-4 shadow dark:bg-dark-secondary md:col-span-2">
+          <h3 className="mb-4 text-lg font-semibold dark:text-white">
+            Your Tasks
+          </h3>
+          <div style={{ height: 400, width: "100%" }}>
+            <DataGrid
+              rows={tasks || []}
+              columns={taskColumns}
+              checkboxSelection
+              loading={tasksLoading}
+              getRowClassName={() => "data-grid-row"}
+              getCellClassName={() => "data-grid-cell"}
+              className={dataGridClassNames}
+              sx={dataGridSxStyles(isDarkMode)}
+            />
+          </div>
         </div>
       </div>
     </div>
