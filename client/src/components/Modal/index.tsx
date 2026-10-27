@@ -18,6 +18,7 @@ const Modal = ({ children, isOpen, onClose, name }: Props) => {
       <div className="w-full max-w-2xl rounded-lg bg-white p-4 shadow-lg dark:bg-dark-secondary">
         <Header
           name={name}
+          isSmallText
           buttonComponent={
             <button
               className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-primary text-white hover:bg-blue-600"
@@ -26,7 +27,6 @@ const Modal = ({ children, isOpen, onClose, name }: Props) => {
               <X size={18} />
             </button>
           }
-          isSmallText={true}
         />
         {children}
       </div>
