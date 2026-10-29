@@ -11,14 +11,14 @@ type Props = {
   setIsModalNewTaskOpen: (isOpen: boolean) => void;
 };
 
-const statusColors = (status: string) => {
+export const statusColors = (status: string) => {
   if (status === "To Do") return "bg-blue-100 text-blue-800";
   if (status === "Work In Progress") return "bg-green-100 text-green-800";
   if (status === "Under Review") return "bg-orange-100 text-orange-800";
   return "bg-gray-100 text-gray-800";
 };
 
-const priorityColors = (priority: string) => {
+export const priorityColors = (priority: string) => {
   if (priority === "Urgent") return "bg-red-100 text-red-800";
   if (priority === "High") return "bg-yellow-100 text-yellow-800";
   if (priority === "Medium") return "bg-green-100 text-green-800";
