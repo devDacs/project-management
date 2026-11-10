@@ -95,7 +95,9 @@ const ModalNewTask = ({ id = null, isOpen, onClose }: Props) => {
           >
             <option value="">Select Option</option>
             {Object.entries(Status).map(([key, value]) => (
-              <option value={key}>{value}</option>
+              <option key={key} value={key}>
+                {value}
+              </option>
             ))}
           </select>
           <select
@@ -105,7 +107,9 @@ const ModalNewTask = ({ id = null, isOpen, onClose }: Props) => {
           >
             <option value="">Select Option</option>
             {Object.entries(Priority).map(([key, value]) => (
-              <option value={key}>{value}</option>
+              <option key={key} value={key}>
+                {value}
+              </option>
             ))}
           </select>
         </div>
